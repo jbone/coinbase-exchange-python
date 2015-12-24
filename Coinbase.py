@@ -17,9 +17,9 @@ from pprint import pprint
 
 base_url = "https://api.exchange.coinbase.com/"
 # TODO: Make this more secure and grab from file.
-_key = "d76941ff00c1984627fae55459295d00"
-_secret = "EfofdJnY5k0mu++m/5zZmp7N1qFiDaAsrWJQ4TH89XX8RKFPTiAXazhlpML63AhC8XXRtm5ABwrFd4BT9IaMog=="
-_passphrase = "eszu1h4srlc5l8fr"
+_key = "key"
+_secret = "secret"
+_passphrase = "passphrase"
 
 class Coinbase():
 
