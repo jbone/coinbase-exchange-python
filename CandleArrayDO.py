@@ -19,7 +19,7 @@ class CandleArrayDO():
 
 	def RSI(self, sensitivity):
 		#
-		# Quantifies momentum. Overbought or oversold?
+		# Quantifies momentum.
 		# Analysizes the RSI, measuring the number of candles previous to the last
 		# in CandlestickArray as noted by sensitivity int. 
 		# 100 - 100/(1 + (Average of x periods up / Average of x periods down)
@@ -83,7 +83,7 @@ class CandleArrayDO():
 		movingAverage = None # final moving average to return
 
 		if len(self.array) < period:
-			# Check to make sure the array is long enough for desired sensitivity.
+			# Check to make sure the array is long enough for desired period.
 			firstCandleNumb = 0
 		else:
 			firstCandleNumb = len(self.array) - period
@@ -104,12 +104,13 @@ class CandleArrayDO():
 		# discounts older prices given by weight (value 0-1).
 		# Higher weight = discounts older prices, faster.
 		#
+		"""
 		priceArray = [] #store closing prices to be averages
 		tot = 0 #temp array to calculate averages
 		movingAverage = None # final moving average to return
 
 		if len(self.array) < period:
-			# Check to make sure the array is long enough for desired sensitivity.
+			# Check to make sure the array is long enough for desired period.
 			firstCandleNumb = 0
 		else:
 			firstCandleNumb = len(self.array) - period
@@ -122,24 +123,41 @@ class CandleArrayDO():
 			movingAverage = tot / period
 
 		return movingAverage
+		"""
 
+	def percentR(self, period):
+			#
+			# Williams %R
+			# Are the candles trading near the high or low? Output: -100 -> 0
+			# Lower the value, the closer the last close is to the lowest in the set.
+			# -100 would mean the close is the lowest in the set.
+			#
+			maximum = None #store highest price in period
+			minimum = None #store lowest price in period
+			tot = 0 #temp array to calculate averages
+			output = None # final moving average to return
 
+			if len(self.array) < period:
+				# Check to make sure the array is long enough for desired period.
+				firstCandleNumb = 0
+			else:
+				firstCandleNumb = len(self.array) - period
 
+			# Starting point = first close
+			maximum = self.array[firstCandleNumb].close
+			minimum = self.array[firstCandleNumb].close
 
+			for candleNum in range(firstCandleNumb+1,len(self.array)):
+				close = self.array[candleNum].close
+				if close > maximum:
+					maximum = close
+				if close < minimum:
+					minimum = close
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+			# Calculate output
+			output = ( (maximum-close) / (maximum-minimum) ) * -100
+			print minimum, maximum, output
+			return output
 
 
 

@@ -44,13 +44,14 @@ for eachCandle in response:
 
 GraphData = CandleArrayDO(CandlestickArray)
 
-
 calcRSI = GraphData.RSI(14)
 print "RSI =", calcRSI
 
 calcSMA = GraphData.SMA(20)
 print "SMA(20) =", calcSMA
 
+calcpercentR = GraphData.percentR(14)
+print "%R(14) =", calcpercentR
 
 print startTime, endTime, granularity
 
