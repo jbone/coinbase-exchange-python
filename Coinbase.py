@@ -61,9 +61,10 @@ class Coinbase():
         }
 
         response = requests.get(base_url + 'products/BTC-USD/candles', params=payload)
+        pprint(response.json())
 
-        if 'message' in response:
-            print "\nERROR", response['message']
+        if 'message' in response.json():
+            print "\nERROR:", response.json()['message']
             return 0
 
         return response.json()
@@ -145,7 +146,7 @@ class Coinbase():
             r = requests.delete(base_url + 'orders', auth=payload)
 
         return r.json()
-        
+
 
 ######################
 ### Authentication ###
