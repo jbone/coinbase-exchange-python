@@ -42,13 +42,13 @@ class Coinbase():
 
     def getDayStats(self):
 
-        response = requests.get(base_url + '/products/BTC-USD/stats')
+        response = requests.get(base_url + 'products/BTC-USD/stats')
         
         return response.json()
 
     def getServerTime(self):
 
-        response = requests.get(base_url + '/time')
+        response = requests.get(base_url + 'time')
         
         return response.json()
 

@@ -50,15 +50,10 @@ print "RSI =", calcRSI
 calcSMA = GraphData.SMA(20)
 print "SMA(20) =", calcSMA
 
+calcEMA = GraphData.EMA(14, 0.5)
+print "EMA(14, 0.5) =", calcEMA
+
 calcpercentR = GraphData.percentR(14)
 print "%R(14) =", calcpercentR
 
 print startTime, endTime, granularity
-
-
-
-
-
-
-
-
